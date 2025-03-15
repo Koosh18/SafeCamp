@@ -1,44 +1,42 @@
-SafeCamp - Campus Security App  
-Description  
-SafeCamp is an Android application designed to enhance campus security and streamline visitor management. The app allows residents to pre-book visitors, manage gate access permissions, inform health emergencies, and send or receive security alerts. This project aims to improve campus safety through efficient data access and monitoring within the mobile application.
-  
-Features  
-Pre-book Visitors: Residents can pre-book visitors to streamline gate access.  
-Manage Gate Access Permissions: Control and monitor who can enter the campus.  
-Health Emergency Alerts: Inform authorities about health emergencies quickly.  
-Security Alerts: Send and receive alerts about security issues on campus.  
+# SafeCamp
 
-Technologies Used  
-Android Studio: Integrated development environment for Android app development.  
-Kotlin: Programming language used for building the app.  
-Firebase: Backend services for authentication, database, and real-time data handling.  
+SafeCamp is a smart visitor management system designed for IIT Bhilai. It streamlines visitor entry and exit by allowing students, faculty, and guards to manage visitor approvals, pre-booking, and real-time notifications.
 
-Installation and Setup  
+## 🚀 Features
 
-Prerequisites  
-Android Studio is installed on your machine.  
+### 🎫 Visitor Management  
+- Students and faculty can approve or reject visitor requests.  
+- Visitors can register with essential details like name, ID, and visit purpose.  
+- Guards can verify visitor details before granting entry.  
 
-Steps ---
+### 📅 Pre-Booking System  
+- Visitors can pre-book their visit to ensure hassle-free entry.  
+- Automated notifications for upcoming visits.  
 
-Clone the repository:  
-git clone https://github.com/Koosh18/SafeCamp.git  
-cd SafeCamp  
+### 🔔 Notification & Alarm System  
+- Real-time push notifications for approval status.  
 
-Open the project in Android Studio:  
 
-Launch Android Studio.
-Click on "Open an existing Android Studio project."  
-Navigate to the SafeCamp project directory and select it.  
+### 🔒 Secure Authentication  
+- Firebase authentication for secure login.  
+- User roles: Student, Faculty, Guard.  
 
-Install dependencies:  
-Android Studio will automatically sync and install the required dependencies.  
+### 🗄️ Database & Cloud Integration  
+- Firebase Firestore for real-time data storage.  
+- Secure access to visitor logs and history.  
 
-Build and run the application:  
-Connect an Android device or use an emulator.  
-Click on the "Run" button in Android Studio to build and deploy the app.  
+### 📊 Data Insights  
+- Log of visitor entries and exits.
+- Future scope - Search and filter entries based on date  
 
-Usage  
-Pre-book Visitors: Use the app interface to schedule visits and provide visitor details.  
-Gate Access Management: Approve or deny access requests through the app.  
-Emergency Alerts: Trigger health emergency notifications to alert campus security.  
-Receive Security Alerts: Stay informed about any security threats or incidents on campus.  
+
+---
+
+## 🛠️ Tech Stack  
+- **Android Studio** - Java-based development.  
+- **Firebase** - Authentication, Firestore, and Cloud Messaging.  
+
+
+---
+
+
