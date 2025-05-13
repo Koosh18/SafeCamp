@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0D1129"
@@ -10,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center">
 
         <!-- Title -->
         <TextView
@@ -21,78 +22,56 @@
             android:textSize="24sp"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="20dp"
+            android:gravity="center" />
 
         <!-- Visitor Name -->
-
         <EditText
             android:id="@+id/visitorName"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-           android:hint="Visitor name"
+            android:hint="Visitor Name"
             android:textAlignment="center"
-
             android:padding="12dp"
+            android:textColor="#FFFFFF"
             android:textColorHint="#A5A2A2"
             android:backgroundTint="#FFFFFF"
-
-            android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginBottom="16dp" />
 
         <!-- Number of Visitors -->
         <EditText
             android:id="@+id/numberOfVisitors"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Number of Visitors"
             android:textAlignment="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-
             android:padding="12dp"
             android:inputType="number"
-
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
             android:textColorHint="#A5A2A2"
+            android:backgroundTint="#FFFFFF"
+            android:textSize="16sp"
             android:layout_marginBottom="16dp" />
 
         <!-- Reason for Visit -->
         <EditText
             android:id="@+id/reasonForVisit"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="Reason for Visit"
-            android:textColorHint="#A5A2A2"
             android:textAlignment="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColor="#FFFF"
-           />
-
-        <!-- Vehicle Number -->
-        <EditText
-            android:id="@+id/vehicleNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Vehicle Number"
-            android:textAlignment="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColor="#FFFF"
-
             android:padding="12dp"
+            android:textColor="#FFFFFF"
             android:textColorHint="#A5A2A2"
+            android:backgroundTint="#FFFFFF"
             android:textSize="16sp"
             android:layout_marginBottom="16dp" />
 
         <!-- Student or Admin Option -->
         <RadioGroup
             android:id="@+id/visitorTypeGroup"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="16dp">
@@ -118,26 +97,21 @@
         <!-- ID Number -->
         <AutoCompleteTextView
             android:id="@+id/idNumber"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="ID Number / Name"
-            android:textColor="#FFFF"
-
             android:textAlignment="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-
             android:padding="12dp"
-            android:inputType="text"
+            android:textColor="#FFFFFF"
             android:textColorHint="#A5A2A2"
-
+            android:backgroundTint="#FFFFFF"
             android:textSize="16sp"
             android:layout_marginBottom="16dp" />
 
         <!-- Submit Button -->
         <Button
             android:id="@+id/submitVisitorButton"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="Notify"
             android:textSize="18sp"

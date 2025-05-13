@@ -3,85 +3,71 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#070D32"
+    android:orientation="vertical"
+    android:gravity="center"
     android:padding="16dp"
-    android:orientation="vertical">
+    android:background="#070D32">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/iitbh">
+        android:src="@mipmap/iitbh"
+        android:layout_marginBottom="30dp" />
 
-    </ImageView>
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="100dp">
+        android:text="Faculty Login"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="24dp"
+        android:gravity="center" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Faculty Login"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="24dp" />
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:padding="10dp"
+        android:textColorHint="#CCCCCC"
+        android:layout_marginBottom="16dp" />
 
-        <EditText
-            android:id="@+id/edit_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Name"
-            android:inputType="textPersonName"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="#FFFFFF"
-            android:padding="10dp"
-            android:textColorHint="#CCCCCC"
-            android:layout_marginBottom="16dp" />
+    <EditText
+        android:id="@+id/edit_id"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="ID Number"
+        android:inputType="number"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:padding="10dp"
+        android:textColorHint="#CCCCCC"
+        android:layout_marginBottom="16dp" />
 
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:padding="10dp"
+        android:textColorHint="#CCCCCC"
+        android:layout_marginBottom="16dp" />
 
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#A52A2A"
+        android:padding="10dp"
+        android:layout_marginTop="20dp" />
 
-        <EditText
-            android:id="@+id/edit_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="ID Number"
-            android:inputType="number"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="#FFFFFF"
-            android:padding="10dp"
-            android:textColorHint="#CCCCCC"
-            android:layout_marginBottom="16dp" />
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="#FFFFFF"
-            android:padding="10dp"
-            android:textColorHint="#CCCCCC"
-            android:layout_marginBottom="16dp" />
-
-
-
-
-        <Button
-            android:id="@+id/button_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="#A52A2A"
-            android:padding="10dp"
-            android:layout_marginTop="20dp" />
-
-    </LinearLayout>
 </LinearLayout>
-
