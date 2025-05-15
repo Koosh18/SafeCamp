@@ -1,7 +1,6 @@
 package com.example.campsafe;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.AlertDialog;
@@ -10,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -19,47 +17,43 @@ public class guarddashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guarddashboard);
-        TabLayout tab = findViewById(R.id.tab);
-        ViewPager2 page = findViewById(R.id.viewp);
+        setContentView(R.layout.activity_guarddashboard); // Load layout for guard dashboard
+
+        // Get references to UI elements
+        TabLayout tab = findViewById(R.id.tab);              // Tab layout (top row of tabs)
+        ViewPager2 page = findViewById(R.id.viewp);          // ViewPager2 (swipable pages below tabs)
+        Button logout = findViewById(R.id.logout);           // Logout button
+
+        // Setup ViewPager2 with a custom adapter (viewpageradapter.java controls what each page contains)
         viewpageradapter adapter = new viewpageradapter(this);
         page.setAdapter(adapter);
 
-        // Attach TabLayout and ViewPager2 using TabLayoutMediator
-        new TabLayoutMediator(tab, page, (t, position) -> {
-            // Set the title of the tab based on the position
-            t.setText(adapter.getTitlePage(position));
+        // Connect TabLayout and ViewPager2
+        new TabLayoutMediator(tab, page, (tabItem, position) -> {
+            tabItem.setText(adapter.getTitlePage(position)); // Set tab title based on adapter
         }).attach();
 
-        Button logout = findViewById(R.id.logout);
+        // Set up logout button behavior
         logout.setOnClickListener(new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View v) {
-                                          new AlertDialog.Builder(guarddashboard.this)
-                                                  .setTitle("Logout")
-                                                  .setMessage("Are you sure you want to log out?")
-                                                  .setPositiveButton("Yes", (dialog, which) -> {
-                                                      // Handle the logout process
-                                                      SharedPreferences sharedPreferences = getSharedPreferences("GuardPrefs", MODE_PRIVATE);
-                                                      SharedPreferences.Editor editor = sharedPreferences.edit();
-                                                      editor.putBoolean("isLoggedIn", false); // Set login state to false
-                                                      editor.apply();
-                                                      // Optionally, you can finish the activity or redirect to a login screen
-                                                      finish();
-                                                  })
-                                                  .setNegativeButton("No", null) // Dismisses the dialog if "No" is clicked
-                                                  .show(); // Don't forget to call show() to display the dialog
+            @Override
+            public void onClick(View v) {
+                // Show confirmation dialog before logging out
+                new AlertDialog.Builder(guarddashboard.this)
+                        .setTitle("Logout")
+                        .setMessage("Are you sure you want to log out?")
+                        .setPositiveButton("Yes", (dialog, which) -> {
+                            // Clear login state from SharedPreferences
+                            SharedPreferences sharedPreferences = getSharedPreferences("GuardPrefs", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean("isLoggedIn", false); // Mark as logged out
+                            editor.apply();
 
-
-
-                                      }
-                                  }
-        );
-
-
-
+                            // Close dashboard (could be redirected to login screen if needed)
+                            finish();
+                        })
+                        .setNegativeButton("No", null) // Do nothing if "No" is clicked
+                        .show();
+            }
+        });
     }
 }
-
-
-

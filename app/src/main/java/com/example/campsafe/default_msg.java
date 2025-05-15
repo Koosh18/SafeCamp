@@ -11,25 +11,36 @@ import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link DefaultMessageFragment#newInstance} factory method to
+ * Use the {@link default_msg#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DefaultMessageFragment extends Fragment {
+public class default_msg extends Fragment {
 
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private TextView messageTextView;
-    private String messageToShow;
+    TextView txtt ;
 
-    public DefaultMessageFragment() {
+    public default_msg() {
         // Required empty public constructor
     }
 
-    public static DefaultMessageFragment newInstance(String param1, String param2) {
-        DefaultMessageFragment fragment = new DefaultMessageFragment();
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment default_msg.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static default_msg newInstance(String param1, String param2) {
+        default_msg fragment = new default_msg();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -43,26 +54,24 @@ public class DefaultMessageFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-            messageToShow = mParam1;  // Initialize message with param1, adjust if needed
         }
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_default_msg, container, false);
-        messageTextView = rootView.findViewById(R.id.txtt);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+       View Rootview =  inflater.inflate(R.layout.fragment_default_msg, container, false);
+       txtt = Rootview.findViewById(R.id.txtt) ;
 
-        if (messageToShow != null) {
-            messageTextView.setText(messageToShow);
-        }
+       return Rootview ;
 
-        return rootView;
     }
-
-    public void updateText(String text) {
-        messageToShow = text;
-        if (messageTextView != null) {
-            messageTextView.setText(text);
+        public void updateText(String text) {
+            if (txtt != null) {
+                txtt.setText(text);
+            }
         }
     }
-}
+

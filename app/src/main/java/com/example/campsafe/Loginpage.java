@@ -24,13 +24,12 @@ public class Loginpage extends AppCompatActivity {
         }
 
     public void loadFragment(Fragment fragment) {
-        FragmentManager fm = getSupportFragmentManager() ;
-        FragmentTransaction ft = fm.beginTransaction() ;
-       ft.add(R.id.frag,fragment) ;
-       ft.commit() ;
-
-
-
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.frag, fragment);
+        // ft.addToBackStack(null);  // Uncomment if back navigation should revert fragments
+        ft.commit();
     }
+
 }
 

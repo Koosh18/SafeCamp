@@ -1,74 +1,53 @@
 package com.example.campsafe;
 
-import static com.google.firebase.auth.FirebaseAuth.*;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.google.firebase.Firebase;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Splash activity
+ * Displays a 3-second splash screen and redirects user based on saved login state.
+ * User roles: Student, Faculty, Guard
+ */
 public class Splash extends AppCompatActivity {
+    private boolean isLoggedIn(String role, String nameKey, String idKey, Class<?> dashboard) {
+        SharedPreferences prefs = getSharedPreferences(role + "Prefs", Context.MODE_PRIVATE);
+        if (prefs.getBoolean("isLoggedIn", false)) {
+            Intent i = new Intent(Splash.this, dashboard);
+            i.putExtra("name", prefs.getString(nameKey, role));
+            i.putExtra("id", prefs.getInt(idKey, 10));
+            startActivity(i);
+            finish();
+            return true;
+        }
+        return false;
+    }
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
-        FirebaseApp.initializeApp(this) ;
+        // Initialize Firebase before anything else
+        FirebaseApp.initializeApp(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        // Delay for splash screen (3 seconds)
         new Handler().postDelayed(() -> {
-            // Check StudentPrefs first
-            SharedPreferences studentPrefs = getSharedPreferences("StudentPrefs", Context.MODE_PRIVATE);
-            if (studentPrefs.getBoolean("isLoggedIn", false)) {
-                Intent studentDashboard = new Intent(Splash.this, studentdashboard.class);
-                studentDashboard.putExtra("name", studentPrefs.getString("studentName", "Student"));
-                studentDashboard.putExtra("id",studentPrefs.getInt("studentID",10)) ;
-                startActivity(studentDashboard);
-                finish();
-                return;
-            }
 
-            // Check GuardPrefs next
-            SharedPreferences guardPrefs = getSharedPreferences("GuardPrefs", Context.MODE_PRIVATE);
-            if (guardPrefs.getBoolean("isLoggedIn", false)) {
-                Intent guardDashboard = new Intent(Splash.this, guarddashboard.class);
-                guardDashboard.putExtra("name", guardPrefs.getString("guardName", "Guard"));
+            if (isLoggedIn("Student", "studentName", "studentID", studentdashboard.class)) return;
+            if (isLoggedIn("Guard", "guardName", "guardID", guarddashboard.class)) return;
+            if (isLoggedIn("Faculty", "facultyName", "facultyID", studentdashboard.class)) return;
 
 
-                startActivity(guardDashboard);
-                finish();
-                return;
-            }
-
-            // Check FacultyPrefs last
-            SharedPreferences facultyPrefs = getSharedPreferences("FacultyPrefs", Context.MODE_PRIVATE);
-            if (facultyPrefs.getBoolean("isLoggedIn", false)) {
-                Intent facultyDashboard = new Intent(Splash.this, studentdashboard.class);
-                facultyDashboard.putExtra("name", facultyPrefs.getString("facultyName", "Faculty"));
-                facultyDashboard.putExtra("id",facultyPrefs.getInt("facultyID",10)) ;
-                startActivity(facultyDashboard);
-                finish();
-                return;
-            }
-
-            // If no one is logged in, redirect to login
+            // === 4. Default: No one is logged in, go to Login page ===
             Intent loginIntent = new Intent(Splash.this, Loginpage.class);
             startActivity(loginIntent);
             finish();
-        }, 3000); // 3-second delay
+
+        }, 3000); // 3 seconds
     }
 }
-
-
-
-
-
