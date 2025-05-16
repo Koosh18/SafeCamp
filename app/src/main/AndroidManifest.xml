@@ -1,17 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
-
-
-
-
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" /> <!-- Optional for lock screen alerts -->
+    <uses-permission android:name="android. permission.MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
 
     <application
         android:allowBackup="true"
@@ -23,13 +21,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampSafe"
         tools:targetApi="31">
+
+        <!-- Existing Activities -->
         <activity
             android:name=".facultydashboard"
             android:exported="false" />
         <activity
             android:name=".studentdashboard"
             android:exported="false" />
-
         <activity
             android:name=".guarddashboard"
             android:exported="false" />
@@ -41,17 +40,23 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-        <receiver android:name=".Notification"/>
-        <service android:name=".AlarmService" />
-        <receiver android:name=".StopAlarmReceiver" android:exported="false" />
+        <activity
+            android:name=".AlarmActivity"
+            android:exported="false" /> <!-- Ensure exported=false for security -->
+        <activity
+            android:name=".VisitorApprovalActivity"
+            android:exported="false" /> <!-- Added for VisitorApprovalActivity -->
 
+        <!-- Services -->
+        <service
+            android:name=".AlarmService"
+            android:foregroundServiceType="mediaPlayback" /> <!-- Added foregroundServiceType -->
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">
@@ -60,9 +65,10 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".AlarmActivity" />
+        <!-- Receivers -->
+        <receiver
+            android:name=".StopAlarmReceiver"
+            android:exported="false" />
 
     </application>
-
-
 </manifest>

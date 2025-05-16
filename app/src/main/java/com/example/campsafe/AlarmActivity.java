@@ -1,38 +1,43 @@
 package com.example.campsafe;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.media.Ringtone;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Activity to handle the alarm when the app is running in the foreground.
+ * Redirects to VisitorApprovalActivity to show visitor details and approval options.
+ */
 public class AlarmActivity extends AppCompatActivity {
-    private static Ringtone ringtone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alarm);
+        setContentView(R.layout.activity_visitor_approval);
 
-        // Stop Alarm when button is clicked
-        Button stopAlarmButton = findViewById(R.id.stop_alarm);
-        stopAlarmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stopAlarm();
-            }
-        });
+        // Stop Alarm button
+        Button stopAlarmButton = findViewById(R.id.stop_alarm_button);
+        stopAlarmButton.setOnClickListener(v -> stopAlarm());
+
+        // Get visitor details from intent (if app is running)
+        Intent intent = getIntent();
+        String visitorName = intent.getStringExtra("visitor_name");
+        String visitReason = intent.getStringExtra("visit_reason");
+        String documentId = intent.getStringExtra("document_id");
+
+        // Immediately redirect to VisitorApprovalActivity with visitor details
+        Intent approvalIntent = new Intent(this, VisitorApprovalActivity.class);
+        approvalIntent.putExtra("visitor_name", visitorName);
+        approvalIntent.putExtra("visit_reason", visitReason);
+        approvalIntent.putExtra("document_id", documentId);
+        startActivity(approvalIntent);
+        finish(); // Close AlarmActivity
     }
 
     private void stopAlarm() {
         // Stop the AlarmService
         Intent intent = new Intent(this, AlarmService.class);
         stopService(intent);
-
-        finish();  // Close the activity
     }
-
 }
