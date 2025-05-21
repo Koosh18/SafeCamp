@@ -1,6 +1,9 @@
 package com.example.campsafe;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +21,7 @@ public class VisitorApprovalActivity extends AppCompatActivity {
     private Button stopAlarmButton, approveButton, rejectButton;
     private String documentId;
     private FirebaseFirestore db;
+    private MediaPlayer mediaPlayer;  // MediaPlayer to handle ringtone playback
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,24 +51,45 @@ public class VisitorApprovalActivity extends AppCompatActivity {
         approveButton.setVisibility(View.GONE);
         rejectButton.setVisibility(View.GONE);
 
-        // Stop alarm button click listener
-        stopAlarmButton.setOnClickListener(v -> {
-            // Stop the alarm
-            MyFirebaseMessagingService.stopAlarm();
-            Intent stopServiceIntent = new Intent(this, AlarmService.class);
-            stopService(stopServiceIntent);
+        // Start playing ringtone
+        startRingtone();
 
-            // Show approve/reject buttons
-            stopAlarmButton.setVisibility(View.GONE);
-            approveButton.setVisibility(View.VISIBLE);
-            rejectButton.setVisibility(View.VISIBLE);
-        });
+        // Stop alarm button click listener
+        stopAlarmButton.setOnClickListener(v -> stopRingtone());
 
         // Approve button click listener
         approveButton.setOnClickListener(v -> updateVisitorStatus(true));
 
         // Reject button click listener
         rejectButton.setOnClickListener(v -> updateVisitorStatus(false));
+    }
+
+    /**
+     * Starts playing the default ringtone when the activity appears on the screen.
+     */
+    private void startRingtone() {
+        Uri ringtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+        mediaPlayer = MediaPlayer.create(this, ringtoneUri);
+        if (mediaPlayer != null) {
+            mediaPlayer.setLooping(true); // Make it loop until stopped
+            mediaPlayer.start();
+        }
+    }
+
+    /**
+     * Stops the ringtone when the "Stop Alarm" button is clicked.
+     */
+    private void stopRingtone() {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+
+        // Hide stop alarm button and show approve/reject buttons
+        stopAlarmButton.setVisibility(View.GONE);
+        approveButton.setVisibility(View.VISIBLE);
+        rejectButton.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -83,5 +108,11 @@ public class VisitorApprovalActivity extends AppCompatActivity {
                         Toast.makeText(this, "Error updating status", Toast.LENGTH_SHORT).show();
                     });
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopRingtone(); // Ensure ringtone stops if activity is closed
     }
 }

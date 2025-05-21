@@ -99,14 +99,21 @@ public class studentdashboard extends AppCompatActivity {
                     }
                     if (snapshots != null && !snapshots.isEmpty()) {
                         Log.i("StudentDashboard", "New visitor request(s) found");
+
                         // Update UI fragment with a notification message
                         msgFragment.updateText("You have a visitor");
-                        // Show dialog for each visitor request found
+
+                        // Redirect to VisitorApprovalActivity for each visitor request
                         for (DocumentSnapshot doc : snapshots.getDocuments()) {
-                            showVisitorDialog(doc);
+                            Intent intent1= new Intent(studentdashboard.this, VisitorApprovalActivity.class);
+                            intent1.putExtra("visitor_name", doc.getString("visitor_name"));
+                            intent1.putExtra("visit_reason", doc.getString("visit_reason"));
+                            intent1.putExtra("document_id", doc.getId());
+                            startActivity(intent1);
                         }
                     }
                 });
+
     }
 
     /**
