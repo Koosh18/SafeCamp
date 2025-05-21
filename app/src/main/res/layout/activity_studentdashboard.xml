@@ -1,55 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="#050A23"
-    >
+    android:background="#050A23">
 
-    <!-- Toolbar -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#0B0A0A"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:elevation="4dp">
-
-        <!-- Pre-Book Visitor Button -->
-        <Button
-            android:id="@+id/button_pre_book"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="Pre-Book"
-
-
-
-            android:textColor="@color/black"
-            android:backgroundTint="#7789EF"
-            android:layout_gravity="start"
-            android:padding="8dp"
-            />
-
-
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:backgroundTint="#FA0707"
-            android:text="Logout"
-            android:textColor="@color/black"></Button>
-
-
-
-
-
-
-    </androidx.appcompat.widget.Toolbar>
-
+    <!-- Welcome Message Section -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,17 +24,87 @@
             android:text="Welcome Koosh"
             android:textColorHighlight="#00020B"
             android:fontFamily="sans-serif-condensed-medium"
-
             android:textColor="#7789EF"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_gravity="center_horizontal"
             android:padding="8dp" />
-
-
     </LinearLayout>
 
 
+    <!-- Toolbar -->
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp"
+        android:background="#070D32">
+
+        <!-- Pre-Book Visitor Button -->
+        <Button
+            android:id="@+id/button_pre_book"
+            android:text="PreBook Visitor"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginBottom="15dp" />
+
+
+        <Button
+            android:id="@+id/button_check_visitors"
+            android:text="Check Your Visitors"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginBottom="15dp" />
+
+        <Button
+            android:id="@+id/button_campus_inout"
+            android:text="Campus In-Out"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginBottom="15dp" />
+
+        <!-- Logout Button -->
+        <Button
+            android:id="@+id/logout"
+            android:text="LogOut"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF5722"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginBottom="50dp" />
+
+        <Button
+            android:id="@+id/alert_all_gaurds"
+            android:text="!!! Alert All Gaurds !!!"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF5722"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:layout_marginBottom="15dp" />
+    </LinearLayout>
 
     <!-- Fragment Container -->
     <FrameLayout
