@@ -24,16 +24,16 @@
 
         <!-- Existing Activities -->
         <activity
-            android:name=".facultydashboard"
+            android:name=".dashboards.FacultyDashboard"
             android:exported="false" />
         <activity
-            android:name=".studentdashboard"
+            android:name=".dashboards.StudentDashboard"
             android:exported="false" />
         <activity
-            android:name=".guarddashboard"
+            android:name=".dashboards.GuardDashboard"
             android:exported="false" />
         <activity
-            android:name=".Loginpage"
+            android:name=".logins.LoginPage"
             android:exported="false" />
         <activity
             android:name=".Splash"
@@ -47,18 +47,18 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".AlarmActivity"
+            android:name=".alarmActivities.AlarmActivity"
             android:exported="false" /> <!-- Ensure exported=false for security -->
         <activity
-            android:name=".VisitorApprovalActivity"
+            android:name=".newVisitorActivities.VisitorApprovalActivity"
             android:exported="false" /> <!-- Added for VisitorApprovalActivity -->
 
         <!-- Services -->
         <service
-            android:name=".AlarmService"
+            android:name=".alarmActivities.AlarmService"
             android:foregroundServiceType="mediaPlayback" /> <!-- Added foregroundServiceType -->
         <service
-            android:name=".MyFirebaseMessagingService"
+            android:name=".alarmActivities.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -67,7 +67,7 @@
 
         <!-- Receivers -->
         <receiver
-            android:name=".StopAlarmReceiver"
+            android:name=".alarmActivities.StopAlarmReceiver"
             android:exported="false" />
 
     </application>

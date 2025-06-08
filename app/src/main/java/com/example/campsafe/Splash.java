@@ -7,6 +7,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.campsafe.dashboards.GuardDashboard;
+import com.example.campsafe.dashboards.StudentDashboard;
+import com.example.campsafe.logins.LoginPage;
 import com.google.firebase.FirebaseApp;
 
 /**
@@ -38,13 +41,13 @@ public class Splash extends AppCompatActivity {
         // Delay for splash screen (3 seconds)
         new Handler().postDelayed(() -> {
 
-            if (isLoggedIn("Student", "studentName", "studentID", studentdashboard.class)) return;
-            if (isLoggedIn("Guard", "guardName", "guardID", guarddashboard.class)) return;
-            if (isLoggedIn("Faculty", "facultyName", "facultyID", studentdashboard.class)) return;
+            if (isLoggedIn("Student", "studentName", "studentID", StudentDashboard.class)) return;
+            if (isLoggedIn("Guard", "guardName", "guardID", GuardDashboard.class)) return;
+            if (isLoggedIn("Faculty", "facultyName", "facultyID", StudentDashboard.class)) return;
 
 
             // === 4. Default: No one is logged in, go to Login page ===
-            Intent loginIntent = new Intent(Splash.this, Loginpage.class);
+            Intent loginIntent = new Intent(Splash.this, LoginPage.class);
             startActivity(loginIntent);
             finish();
 
