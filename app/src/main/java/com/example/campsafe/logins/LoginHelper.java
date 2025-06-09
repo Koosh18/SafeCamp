@@ -3,7 +3,6 @@ package com.example.campsafe.logins;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
 import com.example.campsafe.dashboards.GuardDashboard;
 import com.example.campsafe.dashboards.StudentDashboard;
 import com.example.campsafe.dbModels.GuardDB;

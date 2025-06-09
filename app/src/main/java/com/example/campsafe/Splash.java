@@ -1,12 +1,10 @@
 package com.example.campsafe;
 
+import static com.example.campsafe.logins.LoginUtils.isLoggedIn;
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-
 import com.example.campsafe.dashboards.GuardDashboard;
 import com.example.campsafe.dashboards.StudentDashboard;
 import com.example.campsafe.logins.LoginPage;
@@ -18,18 +16,6 @@ import com.google.firebase.FirebaseApp;
  * User roles: Student, Faculty, Guard
  */
 public class Splash extends AppCompatActivity {
-    private boolean isLoggedIn(String role, String nameKey, String idKey, Class<?> dashboard) {
-        SharedPreferences prefs = getSharedPreferences(role + "Prefs", Context.MODE_PRIVATE);
-        if (prefs.getBoolean("isLoggedIn", false)) {
-            Intent i = new Intent(Splash.this, dashboard);
-            i.putExtra("name", prefs.getString(nameKey, role));
-            i.putExtra("id", prefs.getInt(idKey, 10));
-            startActivity(i);
-            finish();
-            return true;
-        }
-        return false;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +27,9 @@ public class Splash extends AppCompatActivity {
         // Delay for splash screen (3 seconds)
         new Handler().postDelayed(() -> {
 
-            if (isLoggedIn("Student", "studentName", "studentID", StudentDashboard.class)) return;
-            if (isLoggedIn("Guard", "guardName", "guardID", GuardDashboard.class)) return;
-            if (isLoggedIn("Faculty", "facultyName", "facultyID", StudentDashboard.class)) return;
+            if (isLoggedIn(this,"Student", "studentName", "studentID", StudentDashboard.class)) return;
+            if (isLoggedIn(this,"Guard", "guardName", "guardID", GuardDashboard.class)) return;
+            if (isLoggedIn(this,"Faculty", "facultyName", "facultyID", StudentDashboard.class)) return;
 
 
             // === 4. Default: No one is logged in, go to Login page ===

@@ -12,9 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.campsafe.R;
-import com.example.campsafe.logins.FacultyLogin;
-import com.example.campsafe.logins.GuardLogin;
-import com.example.campsafe.logins.StudentLogin;
+import com.example.campsafe.logins.GeneralLogin;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,29 +69,28 @@ public class RoleSelection extends Fragment {
         Button btn_faculty = view.findViewById(R.id.button_faculty);
         Button btn_student = view.findViewById(R.id.button_student) ;
         Button btn_guard = view.findViewById(R.id.button_guard) ;
+
         btn_faculty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                loadFragment(new FacultyLogin());
-
+                loadFragment(GeneralLogin.newInstance("faculty"));
             }
-
         });
 
         btn_guard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragment(new GuardLogin());
+                loadFragment(GeneralLogin.newInstance("guard"));
             }
         });
 
         btn_student.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragment(new StudentLogin());
+                loadFragment(GeneralLogin.newInstance("student"));
             }
         });
+
 
         return view ;
 
@@ -103,8 +100,5 @@ public class RoleSelection extends Fragment {
         FragmentTransaction ft = fm.beginTransaction() ;
         ft.replace(R.id.frag,fragment) ;
         ft.commit() ;
-
-
-
     }
 }
