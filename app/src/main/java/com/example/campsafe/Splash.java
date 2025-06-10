@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import com.example.campsafe.dashboards.GuardDashboard;
-import com.example.campsafe.dashboards.StudentDashboard;
+import com.example.campsafe.guardDashboard.GuardDashboard;
+import com.example.campsafe.studentDashboard.StudentDashboard;
 import com.example.campsafe.logins.LoginPage;
 import com.google.firebase.FirebaseApp;
 

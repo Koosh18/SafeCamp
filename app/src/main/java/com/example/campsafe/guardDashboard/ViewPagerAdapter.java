@@ -1,4 +1,4 @@
-package com.example.campsafe.newVisitorActivities;
+package com.example.campsafe.guardDashboard;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

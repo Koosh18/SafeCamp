@@ -1,17 +1,13 @@
-package com.example.campsafe.dashboards;
+package com.example.campsafe.guardDashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.app.AlertDialog;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import com.example.campsafe.R;
 import com.example.campsafe.logins.LogOutHelper;
-import com.example.campsafe.newVisitorActivities.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 

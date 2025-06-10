@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import com.example.campsafe.dashboards.GuardDashboard;
-import com.example.campsafe.dashboards.StudentDashboard;
+import com.example.campsafe.guardDashboard.GuardDashboard;
+import com.example.campsafe.studentDashboard.StudentDashboard;
 import com.example.campsafe.dbModels.FacultyDB;
 import com.example.campsafe.dbModels.GuardDB;
 import com.example.campsafe.dbModels.StudentDB;

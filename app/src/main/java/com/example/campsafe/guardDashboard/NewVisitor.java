@@ -1,4 +1,4 @@
-package com.example.campsafe.newVisitorActivities;
+package com.example.campsafe.guardDashboard;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -26,6 +26,7 @@ import com.example.campsafe.R;
 import com.example.campsafe.dbModels.FacultyDB;
 import com.example.campsafe.dbModels.NewVisitorDB;
 import com.example.campsafe.dbModels.StudentDB;
+import com.example.campsafe.newVisitorActivities.VisitorApprovalActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;

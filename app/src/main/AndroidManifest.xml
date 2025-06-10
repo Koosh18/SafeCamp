@@ -24,13 +24,13 @@
 
         <!-- Existing Activities -->
         <activity
-            android:name=".dashboards.FacultyDashboard"
+            android:name=".facultyDashboard.FacultyDashboard"
             android:exported="false" />
         <activity
-            android:name=".dashboards.StudentDashboard"
+            android:name=".studentDashboard.StudentDashboard"
             android:exported="false" />
         <activity
-            android:name=".dashboards.GuardDashboard"
+            android:name=".guardDashboard.GuardDashboard"
             android:exported="false" />
         <activity
             android:name=".logins.LoginPage"

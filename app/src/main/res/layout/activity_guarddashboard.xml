@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#11173A"
-    tools:context=".dashboards.GuardDashboard">
+    tools:context=".guardDashboard.GuardDashboard">
 
     <Button
         android:id="@+id/logout"

@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.example.campsafe.R;
-import com.example.campsafe.newVisitorActivities.RoleSelection;
+import com.example.campsafe.RoleSelection;
 
 public class LoginPage extends AppCompatActivity {
 

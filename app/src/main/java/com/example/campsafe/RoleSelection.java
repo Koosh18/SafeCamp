@@ -1,4 +1,4 @@
-package com.example.campsafe.newVisitorActivities;
+package com.example.campsafe;
 
 import android.os.Bundle;
 
@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.campsafe.R;
 import com.example.campsafe.logins.GeneralLogin;
 
 /**

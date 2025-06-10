@@ -1,4 +1,4 @@
-package com.example.campsafe.newVisitorActivities;
+package com.example.campsafe.guardDashboard;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

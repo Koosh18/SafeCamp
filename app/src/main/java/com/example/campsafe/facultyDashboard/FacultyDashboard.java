@@ -1,4 +1,4 @@
-package com.example.campsafe.dashboards;
+package com.example.campsafe.facultyDashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
