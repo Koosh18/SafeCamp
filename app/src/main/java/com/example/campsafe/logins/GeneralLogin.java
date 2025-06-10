@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.example.campsafe.R;
 
 public class GeneralLogin extends Fragment {
@@ -53,7 +52,7 @@ public class GeneralLogin extends Fragment {
             String name = nameInput.getText().toString().trim();
             String idStr = idInput.getText().toString().trim();
             String pass = passwordInput.getText().toString().trim();
-            LoginUtils.handleLogin(requireContext(), role, name, idStr, pass);
+            LoginHelper.handleLogin(requireContext(), role, name, idStr, pass);
         });
 
         return rootview;

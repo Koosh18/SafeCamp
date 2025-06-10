@@ -1,4 +1,4 @@
-package com.example.campsafe.generalActivities;
+package com.example.campsafe.newVisitorActivities;
 
 import android.os.Bundle;
 

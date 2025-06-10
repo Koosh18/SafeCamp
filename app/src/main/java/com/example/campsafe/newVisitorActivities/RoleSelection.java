@@ -1,4 +1,4 @@
-package com.example.campsafe.generalActivities;
+package com.example.campsafe.newVisitorActivities;
 
 import android.os.Bundle;
 
@@ -73,21 +73,21 @@ public class RoleSelection extends Fragment {
         btn_faculty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragment(GeneralLogin.newInstance("faculty"));
+                loadFragment(GeneralLogin.newInstance("Faculty"));
             }
         });
 
         btn_guard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragment(GeneralLogin.newInstance("guard"));
+                loadFragment(GeneralLogin.newInstance("Guard"));
             }
         });
 
         btn_student.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadFragment(GeneralLogin.newInstance("student"));
+                loadFragment(GeneralLogin.newInstance("Student"));
             }
         });
 

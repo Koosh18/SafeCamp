@@ -1,6 +1,6 @@
 package com.example.campsafe;
 
-import static com.example.campsafe.logins.LoginUtils.isLoggedIn;
+import com.example.campsafe.logins.LoginHelper;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,9 +27,9 @@ public class Splash extends AppCompatActivity {
         // Delay for splash screen (3 seconds)
         new Handler().postDelayed(() -> {
 
-            if (isLoggedIn(this,"Student", "studentName", "studentID", StudentDashboard.class)) return;
-            if (isLoggedIn(this,"Guard", "guardName", "guardID", GuardDashboard.class)) return;
-            if (isLoggedIn(this,"Faculty", "facultyName", "facultyID", StudentDashboard.class)) return;
+            if (LoginHelper.isLoggedIn(this,"Student", "studentName", "studentID", StudentDashboard.class)) return;
+            if (LoginHelper.isLoggedIn(this,"Guard", "guardName", "guardID", GuardDashboard.class)) return;
+            if (LoginHelper.isLoggedIn(this,"Faculty", "facultyName", "facultyID", StudentDashboard.class)) return;
 
 
             // === 4. Default: No one is logged in, go to Login page ===

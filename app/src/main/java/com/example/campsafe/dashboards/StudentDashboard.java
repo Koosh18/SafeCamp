@@ -16,7 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.campsafe.generalActivities.DefaultMessage;
+import com.example.campsafe.logins.LogOutHelper;
+import com.example.campsafe.newVisitorActivities.DefaultMessage;
 import com.example.campsafe.logins.LoginPage;
 import com.example.campsafe.dbModels.PreBookDB;
 import com.example.campsafe.R;
@@ -86,7 +87,7 @@ public class StudentDashboard extends AppCompatActivity {
         updateFcmToken(String.valueOf(studentId));
 
         // Setup logout button listener
-        logoutBtn.setOnClickListener(v -> showLogoutConfirmation());
+        logoutBtn.setOnClickListener(v -> new LogOutHelper(this).showLogoutConfirmation());
 
         // Setup pre-book button listener to show booking dialog
         preBookBtn.setOnClickListener(v -> showPreBookDialog());
@@ -144,40 +145,6 @@ public class StudentDashboard extends AppCompatActivity {
                             .addOnSuccessListener(aVoid -> Log.i("StudentDashboard", "FCM token updated successfully"))
                             .addOnFailureListener(e -> Log.e("StudentDashboard", "Failed to update FCM token", e));
                 });
-    }
-
-    /**
-     * Shows a confirmation dialog before logging out.
-     * On confirmation, clears all login flags in SharedPreferences and redirects to LoginPage.
-     */
-    private void showLogoutConfirmation() {
-        new AlertDialog.Builder(StudentDashboard.this)
-                .setTitle("Logout")
-                .setMessage("Are you sure you want to log out?")
-                .setPositiveButton("Yes", (dialog, which) -> {
-                    clearLoginFlags();
-                    Intent loginIntent = new Intent(StudentDashboard.this, LoginPage.class);
-                    loginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(loginIntent);
-                    finish();
-                })
-                .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
-                .show();
-    }
-
-    /**
-     * Clears the 'isLoggedIn' flag in all SharedPreferences related to user roles.
-     * This is to ensure complete logout across all possible user types.
-     */
-    private void clearLoginFlags() {
-        String[] prefNames = {"StudentPrefs", "FacultyPrefs", "GuardPrefs"};
-        for (String prefName : prefNames) {
-            SharedPreferences sp = getSharedPreferences(prefName, MODE_PRIVATE);
-            if (sp.getBoolean("isLoggedIn", false)) {
-                sp.edit().putBoolean("isLoggedIn", false).apply();
-                Log.i("StudentDashboard", "Cleared isLoggedIn for " + prefName);
-            }
-        }
     }
 
     /**

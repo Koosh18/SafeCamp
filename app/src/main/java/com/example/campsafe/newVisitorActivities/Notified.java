@@ -1,4 +1,4 @@
-package com.example.campsafe.generalActivities;
+package com.example.campsafe.newVisitorActivities;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -11,7 +11,6 @@ import android.widget.ListView;
 
 import com.example.campsafe.R;
 import com.example.campsafe.dbModels.NewVisitorDB;
-import com.example.campsafe.newVisitorActivities.VisitorAdapter;
 
 import java.util.ArrayList;
 import java.util.Map;
