@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#050A23"
+    android:padding="16dp">
+
+    <!-- Heading -->
+    <TextView
+        android:id="@+id/fragment_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Visitor"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="#7789EF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="8dp"
+        android:background="#0B0A0A" />
+
+    <!-- Form Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/visitorName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Visitor Name"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#AAAAAA"
+                android:backgroundTint="#03A9F4"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/numberOfVisitors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number of Visitors"
+                android:inputType="number"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#AAAAAA"
+                android:backgroundTint="#03A9F4"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/reasonForVisit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Reason for Visit"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#AAAAAA"
+                android:backgroundTint="#03A9F4"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <RadioGroup
+                android:id="@+id/visitorTypeGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <RadioButton
+                    android:id="@+id/radioStudent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Student"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginEnd="16dp" />
+
+                <RadioButton
+                    android:id="@+id/radioFaculty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Faculty"
+                    android:textColor="#FFFFFF" />
+            </RadioGroup>
+
+            <AutoCompleteTextView
+                android:id="@+id/idNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select Student/Faculty"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#AAAAAA"
+                android:backgroundTint="#03A9F4"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/submitVisitorButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:backgroundTint="#03A9F4"
+                android:textColor="#FFFFFF"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:textSize="18sp"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/cancelVisitorButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:backgroundTint="#FF5722"
+                android:textColor="#FFFFFF"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:textSize="18sp"
+                android:padding="12dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

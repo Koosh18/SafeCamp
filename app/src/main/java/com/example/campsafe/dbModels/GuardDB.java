@@ -11,15 +11,11 @@ public class GuardDB {
     private final FirebaseFirestore firestore;
     private final CollectionReference guardCollection;
     private final Context context;
-
-    // Constructor to initialize Firestore and reference the Guards collection
     public GuardDB(Context context) {
         this.firestore = FirebaseFirestore.getInstance();
         this.guardCollection = firestore.collection("Guards");
         this.context = context;
     }
-
-    // Add a guard to Firestore
     public void add(Integer ID, String name, String password) {
         Guard guard = new Guard(ID, name, password); // Create Guard object
         guardCollection.document(String.valueOf(ID)) // Use ID as document key
@@ -29,8 +25,6 @@ public class GuardDB {
                 .addOnFailureListener(e ->
                         Toast.makeText(context, "Error adding guard: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
-
-    // Validate guard credentials
     public void validateGuard(Integer ID, String name, String password, GuardValidationCallback callback) {
         guardCollection.document(String.valueOf(ID)) // Search by ID
                 .get()
@@ -55,14 +49,10 @@ public class GuardDB {
                     }
                 });
     }
-
-    // GuardValidationCallback interface to handle results
     public interface GuardValidationCallback {
         void onValidationResult(int result); // 1 for success, 0 for failure, -1 for not found
         void onValidationError(Exception e); // Handle any error during validation
     }
-
-    // Guard model class for Firebase
     public static class Guard {
         private Integer id;
         private String name;

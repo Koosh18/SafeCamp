@@ -1,0 +1,115 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "CampusInOut",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "out_date",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "out_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "new_visitor",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "person_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "visit_date",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "visit_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "new_visitor",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "visit_date",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "visit_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "prebook",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "student_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "visit_date",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "visit_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "prebook",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "student_name",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "visit_date",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "visit_time",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "prebook",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "visit_date",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "visit_time",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "prebook",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "visit_date",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "visit_time",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

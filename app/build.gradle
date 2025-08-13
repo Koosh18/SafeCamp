@@ -23,17 +23,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-
-        packagingOptions {
-            exclude 'META-INF/DEPENDENCIES'
+    packaging {
+        resources {
+            excludes += [
+                    'META-INF/INDEX.LIST',
+                    'META-INF/DEPENDENCIES',
+                    'META-INF/*.kotlin_module',
+                    'META-INF/LICENSE',
+                    'META-INF/NOTICE'
+            ]
         }
-    
-
+    }
 }
 
 dependencies {
@@ -46,14 +52,17 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-messaging'
 
-    // Volley (For making network requests)
+    // OkHttp for HTTP requests
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+
+    // Google OAuth dependencies (Use consistent version)
+    implementation 'com.google.auth:google-auth-library-oauth2-http:1.23.0'
+    implementation 'com.google.auth:google-auth-library-credentials:1.23.0'
+
+    // Volley (For network requests, optional if using OkHttp)
     implementation 'com.android.volley:volley:1.2.1'
 
-    // Google OAuth dependencies (Required for OAuth-based FCM requests)
-    implementation 'com.google.auth:google-auth-library-oauth2-http:1.19.0'
-    implementation 'com.google.auth:google-auth-library-credentials:1.19.0'
-
-    // Google Play Services (Ensures Firebase integration works)
+    // Google Play Services
     implementation 'com.google.android.gms:play-services-auth:21.1.1'
 
     // UI & Material Design Components
@@ -61,7 +70,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.12.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-
 
     // Testing dependencies
     testImplementation 'junit:junit:4.13.2'

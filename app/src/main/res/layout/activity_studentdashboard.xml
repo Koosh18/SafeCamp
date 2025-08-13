@@ -58,7 +58,19 @@
 
         <Button
             android:id="@+id/button_check_visitors"
-            android:text="Check Your Visitors"
+            android:text="PreBooked Visitor's History"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginBottom="15dp" />
+
+        <Button
+            android:id="@+id/button_check_new_visitors"
+            android:text="Notified Visitor's History"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#03A9F4"

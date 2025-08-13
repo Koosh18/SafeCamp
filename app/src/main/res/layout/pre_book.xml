@@ -1,110 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center"
+    android:layout_height="match_parent"
+    android:background="#0D1129"
     android:padding="20dp"
-    android:background="#FFFFFF">
+    android:fillViewport="true">
 
-    <!-- Dialog Title -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pre-Book Visitor"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        android:gravity="center"
-        android:layout_marginBottom="16dp" />
-
-    <!-- Number of Visitors -->
-    <EditText
-        android:id="@+id/num_visitors"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter number of visitors"
-        android:padding="12dp"
-        android:textColor="#000000"
-        android:textColorHint="#757575"
-        android:backgroundTint="#CCCCCC"
-        android:layout_marginBottom="12dp" />
-
-    <!-- Visitor Name -->
-    <EditText
-        android:id="@+id/visitor_name"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter visitor's name"
-        android:padding="12dp"
-        android:textColor="#000000"
-        android:textColorHint="#757575"
-        android:backgroundTint="#CCCCCC"
-        android:layout_marginBottom="12dp" />
-
-    <!-- Purpose of Visit -->
-    <EditText
-        android:id="@+id/purpose"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter purpose of visit"
-        android:padding="12dp"
-        android:textColor="#000000"
-        android:textColorHint="#757575"
-        android:backgroundTint="#CCCCCC"
-        android:layout_marginBottom="12dp" />
-
-    <!-- Date Picker -->
-    <Button
-        android:id="@+id/date_picker"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="Select Date"
-        android:backgroundTint="#FFFF"
-        android:textColor="#838080"
-        android:layout_marginBottom="12dp"
-        android:padding="12dp" />
-
-    <!-- Time Picker -->
-    <Button
-        android:id="@+id/time_picker"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="Select Time"
-        android:backgroundTint="#FFFF"
-        android:textColor="#888585"
-        android:layout_marginBottom="20dp"
-        android:padding="12dp" />
-
-    <!-- Submit & Cancel Buttons -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="67dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <Button
-            android:id="@+id/btn_submit"
-            android:layout_width="120dp"
+        <!-- Dialog Title -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#59B9E4"
-            android:padding="12dp"
-            android:text="Submit"
-            android:textColor="#FFFFFF" />
+            android:text="Pre-Book Visitor"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
+            android:gravity="center" />
 
-        <View
-            android:layout_width="20dp"
-            android:layout_height="match_parent" />
-
-        <Button
-            android:id="@+id/btn_cancel"
-            android:layout_width="120dp"
+        <!-- Number of Visitors -->
+        <EditText
+            android:id="@+id/num_visitors"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="#F10707"
+            android:hint="Enter number of visitors"
+            android:textAlignment="center"
             android:padding="12dp"
-            android:text="Cancel"
-            android:textColor="#FFFFFF" />
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#A5A2A2"
+            android:backgroundTint="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Visitor Name -->
+        <EditText
+            android:id="@+id/visitor_name"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter visitor's name"
+            android:textAlignment="center"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#A5A2A2"
+            android:backgroundTint="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Purpose of Visit -->
+        <EditText
+            android:id="@+id/purpose"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="Purpose"
+            android:textAlignment="center"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#A5A2A2"
+            android:backgroundTint="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Date Picker -->
+        <Button
+            android:id="@+id/date_picker"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Select Date"
+            android:textSize="16sp"
+            android:backgroundTint="#FFFFFF"
+            android:textColor="#0D1129"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Time Picker -->
+        <Button
+            android:id="@+id/time_picker"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Select Time"
+            android:textSize="16sp"
+            android:backgroundTint="#FFFFFF"
+            android:textColor="#0D1129"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Submit & Cancel Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:textSize="18sp"
+                android:backgroundTint="#1E90FF"
+                android:textColor="#FFFFFF"
+                android:padding="12dp" />
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:textSize="18sp"
+                android:backgroundTint="#FF0000"
+                android:textColor="#FFFFFF"
+                android:padding="12dp" />
+        </LinearLayout>
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

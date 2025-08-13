@@ -1,4 +1,4 @@
-package com.example.campsafe.newVisitorActivities;
+package com.example.campsafe.studentDashboard;
 
 import android.os.Bundle;
 
@@ -64,7 +64,7 @@ public class DefaultMessage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View Rootview =  inflater.inflate(R.layout.fragment_default_msg, container, false);
+       View Rootview =  inflater.inflate(R.layout.fragment_default_msg_studentdashboard, container, false);
        txtt = Rootview.findViewById(R.id.txtt) ;
 
        return Rootview ;

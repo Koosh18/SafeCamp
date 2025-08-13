@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="6dp"
+    app:cardCornerRadius="12dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="#B3ADAD">
+
+        <!-- Student Name -->
+        <TextView
+            android:id="@+id/student_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Name"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Student ID -->
+        <TextView
+            android:id="@+id/student_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student ID"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Purpose -->
+        <TextView
+            android:id="@+id/purpose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Purpose"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Out Date and Time -->
+        <TextView
+            android:id="@+id/out_datetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Out Date and Time"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <!-- In Date and Time -->
+        <TextView
+            android:id="@+id/in_datetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="In Date and Time"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -14,14 +14,11 @@ public class FacultyDB {
     private  final FirebaseFirestore firestore ;
     private final CollectionReference facultyCollection;
     private final Context context;
-
-
     public FacultyDB(Context context) {
         this.firestore = FirebaseFirestore.getInstance();
         this.facultyCollection = firestore.collection("Faculty");
         this.context = context;
     }
-
     // Add a faculty to Firestore
     public void add(Integer ID, String name, String password) {
         Faculty faculty = new Faculty(ID, name, password);
@@ -32,7 +29,6 @@ public class FacultyDB {
                 .addOnFailureListener(e ->
                         Toast.makeText(context, "Error adding faculty: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
-
     // Validatefaculty credentials
     public void validateFaculty(Integer ID, String name, String password, FacultyValidationCallback callback) {
         facultyCollection.document(String.valueOf(ID)) // Search by ID
@@ -58,7 +54,6 @@ public class FacultyDB {
                     }
                 });
     }
-
     public void getAllFaculties(FacultyListCallback callback) {
         facultyCollection.get()
                 .addOnCompleteListener(task -> {
@@ -74,15 +69,12 @@ public class FacultyDB {
                     }
                 });
     }
-
     // Callback interface for getting all faculties
     public interface FacultyListCallback {
         void onFacultyListReceived(List<Faculty> facultyList);
 
         void onFacultyListError(Exception e);
     }
-
-
         // GuardValidationCallback interface to handle results
     public interface FacultyValidationCallback {
         void onValidationResult(int result); // 1 for success, 0 for failure, -1 for not found

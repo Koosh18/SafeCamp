@@ -1,13 +1,10 @@
 package com.example.campsafe.dbModels;
-
 import android.util.Log;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -18,13 +15,10 @@ import java.util.Map;
 
 public class NewVisitorDB {
     FirebaseFirestore db ;
-
     public NewVisitorDB() {
         db = FirebaseFirestore.getInstance() ;
-
     }
-
-    public void insertData(String visitorName, String numVisitors, String date, String time, String personName, String personId, String reason, OnCompleteListener<DocumentReference> listener) {
+    public void insertData(String visitorName, String numVisitors, String date, String time, String personName, Integer personId, String reason, OnCompleteListener<DocumentReference> listener) {
         Map<String, Object> visitorData = new HashMap<>();
         visitorData.put("visitor_name", visitorName);
         visitorData.put("num_visitors", numVisitors);
@@ -35,7 +29,7 @@ public class NewVisitorDB {
         visitorData.put("reason", reason);
         visitorData.put("approved", null);
 
-        db.collection("NewVisitor")
+        db.collection("new_visitor")
                 .add(visitorData)
                 .addOnCompleteListener(listener);
 
@@ -45,7 +39,7 @@ public class NewVisitorDB {
         calendar.add(Calendar.DAY_OF_MONTH, -30);
         String thirtyDaysAgo = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.getTime());
 
-        db.collection("NewVisitor")
+        db.collection("new_visitor")
                 .whereGreaterThanOrEqualTo("visit_date", thirtyDaysAgo) // Query by date
                 .orderBy("visit_date", Query.Direction.DESCENDING) // Sort by date (newest first)
                 .orderBy("visit_time", Query.Direction.DESCENDING) // Sort by time (newest first)
@@ -64,11 +58,10 @@ public class NewVisitorDB {
 
                                 if (visitDate != null) {
                                     Log.e("debug","adding") ;
-
                                     Map<String, Object> visitorData = new HashMap<>();
                                     visitorData.put("visitor_name", document.getString("visitor_name"));
                                     visitorData.put("person_name", document.getString("person_name"));
-                                    visitorData.put("person_id", document.getString("person_id"));
+                                    visitorData.put("person_id", document.get("person_id"));
                                     visitorData.put("visit_date", dateStr);
                                     visitorData.put("visit_time", timeStr);
                                     visitorData.put("approved", document.getBoolean("approved"));
@@ -85,12 +78,59 @@ public class NewVisitorDB {
                 });
     }
 
+    public void getRecentVisitorsOfStudent(int studentId, VisitorCallback callback) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, -30);
+        String thirtyDaysAgo = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.getTime());
+
+        db.collection("new_visitor")
+                .whereGreaterThanOrEqualTo("visit_date", thirtyDaysAgo)
+                //.whereEqualTo("person_id", studentId)
+                .orderBy("visit_date", Query.Direction.DESCENDING)
+                .orderBy("visit_time", Query.Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        ArrayList<Map<String, Object>> visitorList = new ArrayList<>();
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            String dateStr = document.getString("visit_date");
+                            String timeStr = document.getString("visit_time");
+
+                            if (dateStr == null || timeStr == null) {
+                                Log.e("Firestore Error", "Missing date/time for document ID: " + document.getId());
+                                continue;
+                            }
+
+                            try {
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                                Date visitDate = sdf.parse(dateStr + " " + timeStr);
+                                if (visitDate != null) {
+                                    Log.d("Firestore Debug", "Adding visitor: " + document.getString("visitor_name"));
+                                    Map<String, Object> visitorData = new HashMap<>();
+                                    visitorData.put("visitor_name", document.getString("visitor_name"));
+                                    visitorData.put("person_name", document.getString("person_name"));
+                                    visitorData.put("person_id", document.get("person_id"));
+                                    visitorData.put("visit_date", dateStr);
+                                    visitorData.put("visit_time", timeStr);
+                                    visitorData.put("approved", document.getBoolean("approved"));
+                                    visitorList.add(visitorData);
+                                }
+                            } catch (Exception e) {
+                                Log.e("Parse Error", "Failed to parse date/time: " + dateStr + " " + timeStr, e);
+                            }
+                        }
+                        Log.d("Firestore Debug", "Query returned " + visitorList.size() + " records for studentId: " + studentId);
+                        callback.onSuccess(visitorList);
+                    } else {
+                        Log.e("Firestore Error", "Query failed for studentId: " + studentId + ", error: " + task.getException().getMessage(), task.getException());
+                        callback.onFailure(task.getException());
+                    }
+                });
+    }
 
     public interface VisitorCallback {
             void onSuccess(ArrayList<Map<String, Object>> visitors);
             void onFailure(Exception e);
         }
-
-
-
 }
+// .whereEqualTo("person_id",studentId)

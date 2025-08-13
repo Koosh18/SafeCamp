@@ -7,38 +7,31 @@
 
     <TextView
         android:id="@+id/visitor_name_text"
+        android:text="Visitor: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Visitor: "
         android:textSize="18sp"
         android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/visit_reason_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="Reason: "
-        android:textSize="18sp"
-        android:layout_marginBottom="16dp"/>
-
-    <Button
-        android:id="@+id/stop_alarm_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Stop Alarm"
+        android:textSize="16sp"
         android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/approve_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Approve Visitor"
+        android:text="Approve"
         android:layout_marginBottom="8dp"/>
 
     <Button
         android:id="@+id/reject_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Reject Visitor"/>
+        android:text="Reject"/>
 
 </LinearLayout>

@@ -24,13 +24,13 @@ public class StudentDB {
 
 
     public void add(Integer ID, String name, String password) {
-        Student student = new Student(ID, name, password); // Create Guard object
+        Student student = new Student(ID, name, password); // Create Student object
         studentCollection.document(String.valueOf(ID)) // Use ID as document key
                 .set(student)
                 .addOnSuccessListener(aVoid ->
-                        Toast.makeText(context, "Guard added successfully!", Toast.LENGTH_SHORT).show())
+                        Toast.makeText(context, "Student added successfully!", Toast.LENGTH_SHORT).show())
                 .addOnFailureListener(e ->
-                        Toast.makeText(context, "Error adding guard: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                        Toast.makeText(context, "Error adding student: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     // Validate guard credentials
@@ -120,11 +120,9 @@ public class StudentDB {
         public void setName(String name) {
             this.name = name;
         }
-
         public String getPassword() {
             return password;
         }
-
         public void setPassword(String password) {
             this.password = password;
         }
